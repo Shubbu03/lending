@@ -57,11 +57,14 @@ impl<'info> InitBank<'info> {
             mint_address: self.mint.key(),
             total_deposits: 0,
             total_deposits_shares: 0,
+            total_borrowed: 0,
+            total_borrowed_shares: 0,
             liquadation_threshold,
             liquadation_bonus: 0,
             liquadation_close_factor: 0,
             max_ltv,
             last_updated: Clock::get()?.unix_timestamp,
+            interest_rate: 0.05 as u64,
         });
         Ok(())
     }
