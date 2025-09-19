@@ -2,6 +2,8 @@
 use anchor_lang::prelude::*;
 use instructions::*;
 
+mod constants;
+mod error;
 mod instructions;
 mod state;
 declare_id!("CGcqN95YmRuWobDvG1YANh3XE8gtecVfvTnKrBNatD3y");
@@ -24,5 +26,15 @@ pub mod lending {
 
     pub fn deposit(ctx: Context<Deposit>, amount: u64) -> Result<()> {
         ctx.accounts.deposit_asset(amount)
+    }
+
+    pub fn withdraw(ctx: Context<Withdraw>, amount: u64) -> Result<()> {
+        let bank_token_acc_bumps = ctx.bumps.bank_token_account;
+        ctx.accounts.withdraw_asset(amount, bank_token_acc_bumps)
+    }
+
+    pub fn borrow(ctx: Context<Borrow>, amount: u64) -> Result<()> {
+        let bank_token_acc_bumps = ctx.bumps.bank_token_account;
+        ctx.accounts.borrow_assets(amount, bank_token_acc_bumps)
     }
 }
