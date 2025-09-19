@@ -137,6 +137,8 @@ impl<'info> Borrow<'info> {
                 user.borrowed_sol_shares += user_shares;
             }
         }
+
+        user.last_updated_borrow = Clock::get()?.unix_timestamp;
         Ok(())
     }
 }

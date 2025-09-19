@@ -84,6 +84,7 @@ impl<'info> InitUser<'info> {
             borrowed_usdc_shares: 0,
             usdc_address,
             last_updated: Clock::get()?.unix_timestamp,
+            last_updated_borrow: Clock::get()?.unix_timestamp,
         });
         Ok(())
     }
