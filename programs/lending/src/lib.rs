@@ -37,4 +37,8 @@ pub mod lending {
         let bank_token_acc_bumps = ctx.bumps.bank_token_account;
         ctx.accounts.borrow_assets(amount, bank_token_acc_bumps)
     }
+
+    pub fn repay(ctx: Context<Repay>, amount: u64) -> Result<()> {
+        ctx.accounts.repay_loan(amount)
+    }
 }
