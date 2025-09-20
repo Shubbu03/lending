@@ -8,4 +8,6 @@ pub enum LendingError {
     OverBorrowableAmount,
     #[msg("Over Payment done")]
     OverPayment,
+    #[msg("Not Undercollateralized")]
+    NotUndercollateralized,
 }

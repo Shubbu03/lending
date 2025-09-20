@@ -41,4 +41,9 @@ pub mod lending {
     pub fn repay(ctx: Context<Repay>, amount: u64) -> Result<()> {
         ctx.accounts.repay_loan(amount)
     }
+
+    pub fn liquidate(ctx: Context<Liquidate>) -> Result<()> {
+        let collateral_bank_token_account = ctx.bumps.collateral_bank_token_account;
+        ctx.accounts.liquidate_pool(collateral_bank_token_account)
+    }
 }
